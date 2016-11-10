@@ -7,7 +7,7 @@ function love.load()
 	-- bird object with coordinates, speed, and size
 	bird = {
 		x = 62,
-		y = 200,
+		y = 500,
 		ySpeed = 0,
 		width = 30,
 		height = 25,
@@ -51,6 +51,10 @@ end
 function love.update(dt)
 	bird.ySpeed = bird.ySpeed + (516 * dt)
 	bird.y = bird.y + (bird.ySpeed * dt)
+	--Annie: This is my "fly" function. I commented out the "flap" function.
+	if love.keyboard.isDown("up") then
+	 bird.ySpeed = bird.ySpeed - 40
+	 end
 
 	-- movePipe(x, y) updates the position of the pipe
 	local function movePipe(pipeX, pipeSpaceY)
@@ -139,8 +143,7 @@ function love.draw()
 end
 
 -- love.keypressed is called whenever ANY key is pressed
-function love.keypressed(key)
+--[[function love.keypressed(key)
 	if bird.y > 0 then
-		bird.ySpeed = -165
-	end
-end
+		bird.ySpeed = -165 -- changes how much the bird moves up
+	end]]--
